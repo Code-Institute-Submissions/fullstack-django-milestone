@@ -8,7 +8,7 @@ from django.contrib import messages
 from .models import ShoppingCart, Order
 from products.models import Ebook
 
-stripe.api_key = os.environ.get("STRIPE_SECRET_KEY")
+stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 
 # Create your views here.
 
