@@ -20,6 +20,7 @@ urlpatterns = [
     path('delete-item-checkout/<int:ebook_id>/', cart_views.deleteItemCheckout, name='delete-item-checkout'),
     path('checkout/', cart_views.checkout, name='checkout'),
     path('success/', cart_views.successMsg, name='success'),
+    path('addebook/', products_views.addEbook, name='addebook'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

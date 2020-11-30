@@ -1,0 +1,18 @@
+{% extends 'accounts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container" style="position:absolute;top:100px">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-3 col-md-offset-4">
+      <form method="POST" enctype="multipart/form-data" action="{% url 'addebook' %}">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <p><br>
+          <button type="submit" class="btn btn-success">Add ebook</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

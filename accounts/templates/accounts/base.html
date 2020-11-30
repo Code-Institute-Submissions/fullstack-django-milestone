@@ -29,7 +29,10 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="{% url 'home' %}">Home</a></li>
         {% if user.is_authenticated %}
-        <li><a href="{% url 'home' %}" style="cursor:default;color:white">Hello {{ user|title }}</a></li>
+        <li><a href="{% url 'home' %}" style="cursor:default;color:white">Hello {{ user.user_name }}</a></li>
+        {% endif %}
+        {% if user.id == 1 %}
+          <li><a href="{% url 'addebook' %}" style="color:orange;font-weight:bold">Add new ebook</a></li>
         {% endif %}
       </ul>
       <ul class="nav navbar-nav navbar-right" style="margin-right:60px">

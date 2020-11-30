@@ -1,45 +1,64 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+# EBOOK ONLINE SHOP
+---
 
-Welcome santi-rodri,
+The Ebook Online Shop App is a web app that let people buy ebooks online.
+Payments can be made through Stripe.
+---
+## User Experience (UX)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+This web app has been designed with a **mobile-first** approach in mind, as most people nowadays access the Internet using their smart phones.
 
-## Gitpod Reminders
+Special attention has been paid to make the app **responsive** to different screen sizes so the content can be viewed in a clear and well structured way.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
-`python3 -m http.server`
+### User stories
 
-A blue button should appear to click: *Make Public*,
+#### Site Visitors Goals
+    - As a First Time Visitor, I want to be abel to see all the ebooks on sale in a clear and intuitive way.
+    - I would like to see a description of each ebook by clicking on them on the home page.
+    - I want to have the chance to register and create an account.
+    - I want to be able to login right after I create my account.
+    - Once I am logged in, I want to be able to purchase any ebook I might be inteterested in.
+    - Before I confirm my purchase, I want to put see my items in a shopping cart before I decide to ma e a purchase.
+    - I want to have quick and intuitive access to the checkout area.
+    - I want to be able to remove items from straight from my shopping cart or checkout area without any hassle.
+    - Before I make the payment, I want to see a detailed description of my order, including the ebooks and their individual prices.
+    - I want to clearly see the grand total amount of my order before I proceed to make the payment.
+    - I want to be able to enter my credit card details in an easy and intuitive way.
+    - Once I make the payment, I would like to see a confirmation message for my order and be provided with an order reference number.
+---
 
-Another blue button should appear to click: *Open Browser*.
+## Features
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+- Responsive on all device sizes
+- Interactive elements
+- Easy payment system
+  ---
+## Technologies used
+ 
+ - **HTML5** : Page structure.
+ 
+ - **CSS3** : Styling.
 
-A blue button should appear to click: *Make Public*,
+ - **Javascript / Jquery** : Used for creating the shopping cart animation.
+ 
+ - **Bootstrap** : Responsiveness and form styling.
 
-Another blue button should appear to click: *Open Browser*.
+ - **Python** and the **Django** Backend Framework for all the backend server operations.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+ - **Postgresql** : Relational database system.
 
-## Updates Since The Instructional Video
+ - **Stripe** : Credit Card Payment API to process customer payments.
+ - **Git** : Open source versioning tool
+---
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+## Testing
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+- The website has been tested for **reponsiveness** for all different screen sizes, using the Google Chrome built-in Inspector tool.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+- Tests have been carried out for **card payment implementation**.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+---
+## Deployment
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
+The entire project has been uploaded to **Github**, and then, making use of the **GitPod** interface, it was deployed to **Heroku**, making sure that all the secret keys are securely stored as config variables on Heroku.
