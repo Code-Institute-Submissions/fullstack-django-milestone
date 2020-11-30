@@ -1,0 +1,24 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row" style="margin-top:50px">
+  {% for ebook in ebooks %}
+  <div class="col-xs-6 col-sm-4 col-md-3" style="margin-top: 20px;margin-bottom:40px">
+    <div class="card" style="border:2px solid lavender;border-radius:10px;height:400px">
+      <a href="{% url 'ebook' ebook.id %}"><img class="card-img-top" src="{{ ebook.image.url }}" alt="Card image" style="width:100%;height:300px;border-radius: 10px 10px 0 0"></a>
+      <div class="card-body">
+        <p><br>
+          {% if ebook.id in items_ids %}
+        <div style="text-align:center;color:green"><strong>Already in cart</strong></div>
+        {% else %}
+        <a href="{% url 'add-to-cart' ebook.id %}" class="btn btn-primary" style="text-align:right;margin-left:5px">Add to cart</a>
+        <span style="position:absolute;top:81%;right:15%;font-size:20px"><strong>{{ ebook.price }} €</strong></span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

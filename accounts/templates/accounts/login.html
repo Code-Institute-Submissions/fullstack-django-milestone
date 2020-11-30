@@ -1,0 +1,16 @@
+{% extends 'accounts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container" style="position:absolute;top:100px">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-3 col-md-offset-4">
+      <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Log In</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

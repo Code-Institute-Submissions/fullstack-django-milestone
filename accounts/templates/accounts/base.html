@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Ebook Shop</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/stripe-style.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+
+<body onload="setTimeout(muteMessage, 3000)" class="container-fluid">
+  {% if messages %}
+  {% for message in messages %}
+  <div id="message" class="alert alert-success message-container">
+    <strong>{{ message }}</strong>
+  </div>
+  {% endfor %}
+  {% endif %}
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'home' %}" style="cursor:default;color:white">Hello {{ user|title }}</a></li>
+        {% endif %}
+      </ul>
+      <ul class="nav navbar-nav navbar-right" style="margin-right:60px">
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'beforelogout' %}"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+        {% if cart_items %}
+        <li><a href="{% url 'checkout' %}" style="color:orange;font-weight:bold">CheckOut</a></li>
+        {% endif %}
+        {% else %}
+        <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> LogIn</a></li>
+        {% endif %}
+        <img id="cart-icon" src="{% static 'pics/cart.png' %}" style="position:fixed;top:10px;right:35px">
+      </ul>
+    </div>
+  </nav>
+  <div id="thecart" class="modal-dialog modal-sm cart">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:black;position:sticky;top:0;z-index:500">
+        <button id="close-modal-x" type="button" class="close" style="color:white">&times;</button>
+        <h4 class="modal-title" style="color:white"><strong>Your Shopping Cart</strong></h4>
+      </div>
+      <div class="modal-body">
+        {% if cart_items %}
+        {% for item in cart_items %}
+        <div style="border-bottom:2px solid lavender"><br>
+          <strong>{{ item.title }}</strong>
+          <p><br>
+            <img src="{{ item.image.url }}" width="70px" height="110px"><span style="position:absolute;right:20px"><strong>{{item.price }} €</strong></span><br>
+            <a href="{% url 'delete-item' item.id %}" style="text-decoration:none">Remove</a>
+        </div>
+        {% endfor %}
+        <div style="font-size:25px">
+          <span style="position:absolute;left:20px">Grand Total:</span>
+          <span style="position:absolute;right:20px"><strong>{{ grand_total }} €</strong></span>
+        </div>
+        <p><br>
+        <div class="modal-footer">
+          <p><br><a href="{% url 'checkout' %}"><button id="close-modal-btn" type="button" class="btn" style="background-color:chocolate;color:white">CheckOut</button></a>
+        </div>
+        {% else %}
+        <div style="height: 50px"><strong>Your shopping cart is empty</strong></div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <script>
+    $('#thecart').css('visibility', 'hidden');
+  </script>
+
+  {% block content %}
+  {% endblock %}
+  <script src="{% static 'js/stripe-payment.js' %}"></script>
+  <script src="{% static 'js/cart.js' %}"></script>
+</body>
+
+</html>
